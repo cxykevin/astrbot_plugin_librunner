@@ -1,0 +1,40 @@
+{
+    "echo_reply": {
+        "description": "echo 执行器回复内容（默认值）",
+        "type": "string",
+        "default": "这是 librunner 的 echo 执行器，回复内容可以在插件配置里修改。",
+        "hint": "把 WebUI 的「AI -> Agent 执行方式 -> 执行器」切换为 echo 后，机器人对每条消息都回复这段固定文本。这里是默认值：切换执行器时它会被写进 AI 页面上 echo 的「回复内容」，之后以那里的值为准。留空则使用上面的默认文案。"
+    },
+    "orphan_runner_policy": {
+        "description": "残留执行器处理策略",
+        "type": "string",
+        "options": [
+            "fallback_local",
+            "strict"
+        ],
+        "labels": [
+            "回退到内置 Agent（推荐）",
+            "保持 AstrBot 原生行为（报错）"
+        ],
+        "default": "fallback_local",
+        "hint": "当配置中的执行器属于本插件注入过的类型、但当前没有任何插件注册它（例如注入方插件被禁用或卸载）时的处理方式。fallback_local 会让 AI 对话自动回退到内置 Agent 并打印错误日志；strict 则保持 AstrBot 原生行为，即在构建 pipeline 时抛出 ValueError。"
+    },
+    "enforce_prerequisite": {
+        "description": "强制前置插件（缺失则停用本插件）",
+        "type": "bool",
+        "default": true,
+        "hint": "本插件的 WebUI 文案由前置插件 astrbot_plugin_libi18nject 注入。开启时：启动先检查它，缺失就自动 gh/git clone 装上并就地启用（不会重启 AstrBot 主进程）；装不上就停用本插件，并把原因显示在插件页的「加载失败插件」里。关闭后即便缺前置也照常启用，只是面板文案会显示 [MISSING: ...]。"
+    },
+    "prerequisite_repo": {
+        "description": "前置插件来源",
+        "type": "string",
+        "default": "cxykevin/astrbot_plugin_libi18nject",
+        "hint": "自动安装前置插件时使用的 GitHub owner/repo（也可以写完整 git 地址，便于内网/镜像）。只有在缺少前置且「强制前置插件」开启时才会用到。"
+    },
+    "prerequisite_dir_name": {
+        "description": "前置插件目录名",
+        "type": "string",
+        "default": "astrbot_plugin_libi18nject",
+        "hint": "前置插件在 data/plugins 下的目录名（即插件名）。一般不用改；若改名，需要和「前置插件来源」对应。"
+    }
+}

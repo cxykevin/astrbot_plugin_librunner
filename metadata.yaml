@@ -1,0 +1,7 @@
+name: astrbot_plugin_librunner # 插件唯一识别名，必须与插件目录名一致
+display_name: Librunner · Agent Runner 注入接口 # 用于展示的名字（需要版本 >= v4.5.0）
+desc: 通用 Agent Runner 注入接口：其它插件可通过 api 注册自定义 Agent 执行器，并出现在 WebUI 的执行器下拉框中。
+version: v1.0.0 # 插件版本号。格式：v1.1.1 或者 v1.1
+author: cxykevin # 作者
+repo: https://github.com/cxykevin/astrbot_plugin_librunner # 插件的仓库地址
+astrbot_version: ">=4.29.0" # 依赖 AstrBot v4.29.0 的第三方执行器子阶段实现
